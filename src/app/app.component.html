@@ -1,0 +1,50 @@
+<div class="employeeRegister">
+  <h2>Create Employee</h2>
+  <form [formGroup]="employeeForm" (ngSubmit)="guardar()">
+    <div class="form-group">
+      <label>fullname</label>
+      <input type="text" formControlName="fullname" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>function</label>
+      <input type="text" formControlName="function" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>id_boss</label>
+      <input type="number" formControlName="id_boss" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Save</button>
+  </form>
+</div>
+
+<div class="employeeRegister">
+  <h2>Employees Registred</h2>
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th>idEmp</th>
+        <th>fullname</th>
+        <th>function</th>
+        <th>id_boss</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of employees">
+        <th>{{item.idEmp}}</th>
+        <td>{{item.fullname}}</td>
+        <td>{{item.function}}</td>
+        <td>{{item.id_boss}}</td>
+        <td>
+          <button type="button" class="btn btn-success" (click)="editar(item)">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="eliminar(item)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<router-outlet></router-outlet>
